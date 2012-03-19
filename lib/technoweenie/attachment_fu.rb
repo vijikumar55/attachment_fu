@@ -454,6 +454,8 @@ module Technoweenie # :nodoc:
               attachment_options[:thumbnails].each { |suffix, size| create_or_update_thumbnail(temp_file, suffix, *size) }
             end
             save_to_storage
+
+            callback_with_args :after_attachment_saved
             @temp_paths.clear
             @saved_attachment = nil
           end
