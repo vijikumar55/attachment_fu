@@ -30,7 +30,7 @@ module Technoweenie # :nodoc:
               (db_file || build_db_file).data = temp_data
               db_file.save!
               #self.class.update_all ['db_file_id = ?', self.db_file_id = db_file.id], ['id = ?', id]
-              self.class.where(id: id).update_all(db_file_id: db_file.id)
+              self.class.where(id: id).update_all ['db_file_id = ?', self.db_file_id = db_file.id]
             end
             true
           end
